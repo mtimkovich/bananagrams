@@ -52,22 +52,15 @@ def is_subset(a, b):
     a = sorted(a)
     b = sorted(b)
 
-    a_prev = None
-    b_prev = None
-
-    if len(a) > len(b):
-        subset = False
-
     while subset and len(a) > 0 and len(b) > 0:
-        if a[-1] == b[-1]:
-            a_prev = a.pop()
-            b_prev = b.pop()
+        if len(a) > len(b):
+            subset = False
+        elif a[-1] == b[-1]:
+            a.pop()
+            b.pop()
         elif a[-1] < b[-1]:
             b.pop()
         else:
-            subset = False
-
-        if len(a) > len(b):
             subset = False
 
     return subset
